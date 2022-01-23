@@ -1,7 +1,7 @@
 Since the current [Sauerbraten](http://sauerbraten.org/) version does not have commands to select a specific face or an edge of a cube, this script uses some workarounds to achieve a similar result using the existing commands, not requiring a modified client (thus being slower than it would be if implemented natively).
 
 ### Installation
-Just download and place the [`cubedeformer.cfg`](#file-cubedeformer-cfg-L0) file in the Sauerbraten root folder and run `/exec cubedeformer.cfg` ingame, the [`cubedeformer_examples.cfg`](#file-cubedeformer_examples-cfg-L0) file is optional.
+Just download and place the [`cubedeformer.cfg`](#file-cubedeformer-cfg) file in the Sauerbraten root folder and run `/exec cubedeformer.cfg` ingame, the [`cubedeformer_examples.cfg`](#file-cubedeformer_examples-cfg) file is optional.
 
 ### Face & Edge commands
 
