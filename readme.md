@@ -1,45 +1,46 @@
-Since the current [Sauerbraten](http://sauerbraten.org/) version does not have commands to select a specific face or an edge of a cube, this script uses some workarounds to achieve a similar result using the existing commands, not requiring a modified client (thus being slower than it would be if implemented natively).
+# Cube 2 Sauerbraten Cube Deformer
+Since the current [Sauerbraten 2020 Edition](http://sauerbraten.org/) does not have commands to select a specific face or an edge of a cube, this script uses some workarounds to achieve a similar result using the existing commands, not requiring a modified client (thus being slower than it would be if implemented natively).
 
 ### Installation
-Just download and place the [`cubedeformer.cfg`](#file-cubedeformer-cfg) file in the Sauerbraten root folder and run `/exec cubedeformer.cfg` ingame, the [`cubedeformer_examples.cfg`](#file-cubedeformer_examples-cfg) file is optional.
+Just download and place the [`cubedeformer.cfg`](https://github.com/CubeScript/Sauer-Cube-Deformer/releases/download/0.1/cubedeformer.cfg) file in the Sauerbraten root folder and run `/exec cubedeformer.cfg` ingame, the [`cubedeformer_examples.cfg`](https://github.com/CubeScript/Sauer-Cube-Deformer/releases/download/0.1/cubedeformer_examples.cfg) file is optional.
 
 ### Face & Edge commands
 
 ![](https://raw.githubusercontent.com/SalatielSauer/misc/master/cubedeformer_indexes.png)
 
-- `gotoface` `f` `[c]` `s`
+- `gotoface` `f` `[c]` `s`<br>
 Teleports to face `f` (0..3) and executes `[c]`. `s` is an optional delay that gives time for the gotoface to finish before running another gotoface (otherwise some sync problems may occur), default: 500ms when there is an nested gotoface or 1ms when there is none.
 
 ![](https://raw.githubusercontent.com/SalatielSauer/misc/master/cubedeformer_demo_gotoface.gif)
 
-- `gotoedge` `e` `[c]` `b`
+- `gotoedge` `e` `[c]` `b`<br>
 Teleports to the edge `e` (0..3) of the face being looked at and executes `[c]`. `b` (0/1) is optional and determines whether the gridpower should be changed to an equivalent of the selected edge.
 
 ![](https://raw.githubusercontent.com/SalatielSauer/misc/master/cubedeformer_demo_gotoedge.gif)
 
-- `moveseldo` `x` `y` `z` `c`
+- `moveseldo` `x` `y` `z` `c`<br>
 Adds `x`, `y` and `z` to the position of the current selection, executing `[c]` every move.
 
-- `getlookatface`
+- `getlookatface`<br>
 Returns the face the camera is looking at relative to the world (not the selected face).
 
 ### Native commands
 
 The commands below are already available in the Sauerbraten 2020 edition natively.
 
-- `editface` `d` `t`
+- `editface` `d` `t`<br>
 `t` determines whether the face (0), selection (1) or edge (2) of a cube will be pushed to `d`.
 
-- `flip`
+- `flip`<br>
 Inverts selected geometry.
 
-- `movesel` `a` `d`
+- `movesel` `a` `d`<br>
 `d` determines whether the selection will be moved to x (0), y (1) or z (2) `a` times.
 
-- `rotate` `d`
+- `rotate` `d`<br>
 Rotates once left (-1) or right (1) relative to the selected face.
 
-- `setselpos` `x` `y` `z`
+- `setselpos` `x` `y` `z`<br>
 Sets the position of the current selection to `x` `y` and `z` or creates a new one.
 
 ### Limitations and their workarounds
@@ -71,25 +72,25 @@ Regarding other limitations or problems you may run into, usually a half-second 
 ### Shortcuts
 Although handy, the commands below might not be a good idea if you want to have absolute control over `gotoface` and `gotoedge`.
 
-- `gotoface_fixpitch` `f` `[c]`
+- `gotoface_fixpitch` `f` `[c]`<br>
 Respawns the player to fix the camera orientation and calls `gotoface` with `f` and `[c]` as its parameters.
 
-- `pushedge` `e` `d` `[c]`
+- `pushedge` `e` `d` `[c]`<br>
 Uses `gotoedge` and `editface` to go to an edge and push it `d` times, `[c]` is executed at the end.
 
-- `editfaceedge` `f` `e` `d` `[c]`
+- `editfaceedge` `f` `e` `d` `[c]`<br>
 Uses `gotoface` (`f`), `pushedge` (`e`) and `editface` (`d`), with the difference that it handles +Z (4) and -Z (5) faces automatically (rotating them back and forth).
 
 Keep in mind that you want to avoid anything involving `gotoface` and `gotoedge` as much as possible, most of the time you only need to change faces twice and edge only once, everything else can be handled with `flip` and `rotate`.
 
 ### Examples
-- #### [Ramp](#file-cubedeformer_examples-cfg-L180)
+- #### [Ramp](https://github.com/CubeScript/Sauer-Cube-Deformer/blob/master/cubedeformer_examples.cfg#L180)
 ![](https://raw.githubusercontent.com/SalatielSauer/misc/master/cubedeformer_demo_ramp.gif)
 
-- #### [Twisted Column](#file-cubedeformer_examples-cfg-L114)
+- #### [Twisted Column](https://github.com/CubeScript/Sauer-Cube-Deformer/blob/master/cubedeformer_examples.cfg#L114)
 ![](https://raw.githubusercontent.com/SalatielSauer/misc/master/cubedeformer_demo_twistedcolumn.gif)
 
-- #### [Emerald](#file-cubedeformer_examples-cfg-L347)
+- #### [Emerald](https://github.com/CubeScript/Sauer-Cube-Deformer/blob/master/cubedeformer_examples.cfg#L347)
 ![](https://raw.githubusercontent.com/SalatielSauer/misc/master/cubedeformer_demo_emerald.gif)
 
-See more examples in the [`cubedeformer_examples.cfg`](#file-cubedeformer_examples-cfg-L0) file.
+See more examples in the [`cubedeformer_examples.cfg`](https://github.com/CubeScript/Sauer-Cube-Deformer/blob/master/cubedeformer_examples.cfg) file.
